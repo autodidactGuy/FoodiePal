@@ -28,7 +28,7 @@ class MealListAdapter(private val meals: List<Meal>): RecyclerView.Adapter<MealL
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.mealRecipe.text = meals[position].recipe
+        //holder.mealRecipe.text = meals[position].recipe
         holder.mealDay.text = meals[position].day
     }
 }

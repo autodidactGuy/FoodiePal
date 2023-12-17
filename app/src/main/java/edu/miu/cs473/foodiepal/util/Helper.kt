@@ -9,6 +9,9 @@ import edu.miu.cs473.foodiepal.model.Blog
 import edu.miu.cs473.foodiepal.model.Meal
 import edu.miu.cs473.foodiepal.model.Recipe
 import java.lang.reflect.Type
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 class Helper {
     companion object {
@@ -23,7 +26,32 @@ class Helper {
                     "55 minutes",
                     "The dish is prepared in a karahi (a type of wok) and can take between 30 and 50 minutes to prepare and cook the dish. Cumin, green chilis, ginger, garlic, tomatoes and coriander are key to the flavor of the dish.",
                     "4",
-                    R.drawable.fish)
+                    R.drawable.fish),
+                Recipe("Mix Vegetable",
+                    "30 minutes",
+                    "The dish is prepared in a karahi (a type of wok) and can take between 30 and 50 minutes to prepare and cook the dish. Cumin, green chilis, ginger, garlic, tomatoes and coriander are key to the flavor of the dish.",
+                    "4",
+                    R.drawable.carrot),
+                Recipe("Palao",
+                    "50 minutes",
+                    "The dish is prepared in a karahi (a type of wok) and can take between 30 and 50 minutes to prepare and cook the dish. Cumin, green chilis, ginger, garlic, tomatoes and coriander are key to the flavor of the dish.",
+                    "4",
+                    R.drawable.mobile_steak),
+                Recipe("Daal Chawal",
+                    "30 minutes",
+                    "The dish is prepared in a karahi (a type of wok) and can take between 30 and 50 minutes to prepare and cook the dish. Cumin, green chilis, ginger, garlic, tomatoes and coriander are key to the flavor of the dish.",
+                    "4",
+                    R.drawable.tomato),
+                Recipe("Cake",
+                    "55 minutes",
+                    "The dish is prepared in a karahi (a type of wok) and can take between 30 and 50 minutes to prepare and cook the dish. Cumin, green chilis, ginger, garlic, tomatoes and coriander are key to the flavor of the dish.",
+                    "4",
+                    R.drawable.cake),
+                Recipe("Cupcake",
+                    "45 minutes",
+                    "The dish is prepared in a karahi (a type of wok) and can take between 30 and 50 minutes to prepare and cook the dish. Cumin, green chilis, ginger, garlic, tomatoes and coriander are key to the flavor of the dish.",
+                    "4",
+                    R.drawable.mobile_cupcake)
             )
             val myPrefs = context?.getSharedPreferences(context.getString(R.string.app_name),
                 Context.MODE_PRIVATE
@@ -36,7 +64,6 @@ class Helper {
                         val type: Type = object : TypeToken<List<Recipe?>?>() {}.type
                         savedRecipes = Gson().fromJson(recipesJson, type);
                     }
-                    Log.d("recipes", savedRecipes.toString())
                     recipes.addAll(savedRecipes)
                 }
             }
@@ -131,32 +158,59 @@ class Helper {
             }
         }
 
-        fun getSavedMealPlanIfAny(context: Context?): List<Meal> {
-            val meals = mutableListOf(
-                Meal("Monday", "Mix Vegetable"),
-                Meal("Tuesday", "XYZ Dish"),
-                Meal("Wednesday", "Daal Chawal"),
-                Meal("Thursday", "Palao"),
-                Meal("Friday", "Biryani"),
-                Meal("Saturday", "Karahi"),
-                Meal("Sunday", "Vegetable")
-            )
+        fun getSavedMealPlanIfAny(context: Context?): Map<String, Recipe> {
+            val meals = mutableMapOf<String, Recipe>()
+            val recipes = getSavedRecipesIfAny(context)
+            val days = listOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+            days.forEach {
+                meals[it] = recipes.random()
+            }
             val myPrefs = context?.getSharedPreferences(context.getString(R.string.app_name),
                 Context.MODE_PRIVATE
             )
             if (myPrefs != null) {
                 if (myPrefs.contains("mealPlan")) {
-                    var savedMealPlan = mutableListOf<Recipe>()
+                    var savedMealPlan = mutableListOf<Meal>()
                     val mealJson: String? = myPrefs.getString("mealPlan", null)
                     if (mealJson != null) {
-                        val type: Type = object : TypeToken<List<Recipe?>?>() {}.type
+                        val type: Type = object : TypeToken<List<Meal?>?>() {}.type
                         savedMealPlan = Gson().fromJson(mealJson, type);
                     }
-                    Log.d("recipes", savedMealPlan.toString())
-                    meals.addAll(meals)
+                    savedMealPlan.forEach{
+                        meals[it.day] = it.recipe
+                    }
                 }
+                val editor = myPrefs.edit()
+                val mealPlan = meals.map{
+                    Meal(it.key, it.value)
+                }
+                editor.putString("mealPlan", Gson().toJson(mealPlan))
+                editor.apply()
             }
             return meals;
+        }
+
+        fun saveMeal(context: Context?, meal: Meal) {
+            val meals = getSavedMealPlanIfAny(context).toMutableMap()
+            if (meals.containsKey(meal.day)) {
+                meals[meal.day] = meal.recipe
+            }
+            val mealPlan = meals.map{
+                Meal(it.key, it.value)
+            }
+            val myPrefs = context?.getSharedPreferences(context.getString(R.string.app_name),
+                Context.MODE_PRIVATE
+            )
+            if (myPrefs != null) {
+                val editor = myPrefs.edit()
+                editor.putString("mealPlan", Gson().toJson(mealPlan))
+                editor.apply()
+            }
+        }
+
+        fun getDayOfWeek(date: LocalDate): String {
+            val formatter = DateTimeFormatter.ofPattern("EEEE", Locale.getDefault())
+            return date.format(formatter)
         }
     }
 }

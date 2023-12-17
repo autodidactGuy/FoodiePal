@@ -26,7 +26,7 @@ class AddAboutMeFragment : DialogFragment() {
             if (aboutMeDetails.text.isNotEmpty()) {
                 Helper.saveAboutMe(context, aboutMeDetails.text.toString())
                 val bundle = Bundle()
-                bundle.putSerializable("aboutMe", Gson().toJson(aboutMeDetails.text.toString()))
+                bundle.putString("aboutMe", aboutMeDetails.text.toString())
                 setFragmentResult("addAboutMeSuccess", bundle)
                 dismissAllowingStateLoss()
             }

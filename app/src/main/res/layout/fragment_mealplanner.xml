@@ -1,26 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_weight="0.6"
-    android:orientation="vertical"
-    tools:context=".fragment.MealPlannerFragment">
-
+    android:layout_height="match_parent">
     <FrameLayout
-        android:id="@+id/mealPlannerListContainer"
+        android:id="@+id/mealPlannerContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/mealPlannerList"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbarStyle="outsideOverlay"
-            android:scrollbars="vertical">
+            android:orientation="vertical">
 
-        </androidx.recyclerview.widget.RecyclerView>
+            <CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:id="@+id/todaysMealTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:paddingStart="10dp"
+                android:text="TextView"
+                android:textSize="30sp" />
+
+            <FrameLayout
+                android:id="@+id/todaysMeal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </FrameLayout>
+        </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/addMealPlannerBtn"
@@ -31,8 +44,9 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:src="@drawable/twotone_post_add_24" />
+            android:src="@drawable/twotone_post_add_24"/>
     </FrameLayout>
 
 
-</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
