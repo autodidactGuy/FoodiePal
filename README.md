@@ -1,6 +1,3 @@
-Demo with camera recording: https://drive.google.com/file/d/1vnLGjdNKolQ-JJtRRtPkoXKVn4ddE_aN/view?usp=sharing
-
-Demo: 
 # FoodiePal
 A app using Kotlin, 1tled "FoodiePal - Culinary Companion." This app is designed to be a comprehensive plaDorm for food enthusiasts, offering features such as exploring recipes, meal planning, reading food blogs, and learning more about the app creator through an "About Me" sec1on. The app will leverage Material Design principles, Fragments, RecyclerView, Shared Preferences, Floa1ngAc1onBuNon, Menu, and other key concepts from the lessons.
 
