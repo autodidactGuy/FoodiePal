@@ -1,9 +1,9 @@
 # FoodiePal
-A app using Kotlin, 1tled "FoodiePal - Culinary Companion." This app is designed to be a comprehensive plaDorm for food enthusiasts, offering features such as exploring recipes, meal planning, reading food blogs, and learning more about the app creator through an "About Me" sec1on. The app will leverage Material Design principles, Fragments, RecyclerView, Shared Preferences, Floa1ngAc1onBuNon, Menu, and other key concepts from the lessons.
+A app using Kotlin, titled "FoodiePal - Culinary Companion." This app is designed to be a comprehensive plaDorm for food enthusiasts, offering features such as exploring recipes, meal planning, reading food blogs, and learning more about the app creator through an "About Me" sec1on. The app will leverage Material Design principles, Fragments, RecyclerView, Shared Preferences, Floa1ngAc1onBuNon, Menu, and other key concepts from the lessons.
 
 # [Demo](https://drive.google.com/file/d/1-Rj1El3pbB_XmblcUjwn_8fPWU280mWo/view?usp=sharing)
 
-# [Demo with camera](https://drive.google.com/file/d/1-Rj1El3pbB_XmblcUjwn_8fPWU280mWo/view?usp=sharing)
+# [Demo with Camera](https://drive.google.com/file/d/1vnLGjdNKolQ-JJtRRtPkoXKVn4ddE_aN/view?usp=sharing)
 
 # Splash Activity
 ![alt_text](https://github.com/autodidactGuy/FoodiePal/blob/master/screenshots/Splash.png?raw=true)
