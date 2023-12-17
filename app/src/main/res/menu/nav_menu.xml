@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/recipe"
+        android:icon="@drawable/baseline_fastfood_24"
+        android:title="@string/recipe_fragment_text"  />
+    <item
+        android:id="@+id/mealplanner"
+        android:icon="@drawable/baseline_calendar_month_24"
+        android:title="@string/meal_planner_fragment_text" />
+    <item
+        android:id="@+id/blog"
+        android:icon="@drawable/baseline_newspaper_24"
+        android:title="@string/blog_fragment_text" />
+</menu>

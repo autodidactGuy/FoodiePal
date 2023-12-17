@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">FoodiePal</string>
+    <string name="author_name">Hassan Raza</string>
+    <string name="author_details">Start culinary journey this year. Favourite recipes are added by default in this app. 1) Chicken Biryani 2) Chicken Karahi. According to me, if it looks good, it will taste good!</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="welcome_text">Welcome!</string>
+    <string name="username_text">Username</string>
+    <string name="password_text">Password</string>
+    <string name="login_text">Login</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="recipe_fragment_text">Recipe</string>
+    <string name="meal_planner_fragment_text">Meal Planner</string>
+    <string name="blog_fragment_text">Blog</string>
+    <string name="contact_fragment_text">Contact</string>
+    <string name="about_me_fragment_text">About Me</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
